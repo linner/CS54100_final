@@ -1,4 +1,26 @@
-INSTRUCTIONS:
+NEW INSTRUCTIONS (4/4/11):
+
+Create an account at goodreads-thing.heroku.com/register
+Login at ~/login
+
+During registration, may select admin or user account
+
+Administrators: Can create questions/questionnaires, assign questionnaires,
+and view submitted responses.
+
+Users: Can only respond to questionnaires they have been assigned, and
+respond/submit their answers.
+
+Notes:
+
+-Questions must be created prior to including them in a questionnaire.
+-Questions, once created, cannot be edited (only deleted).
+
+Known issues:
+
+-App not account for modification of questionnaires that have already been taken.
+
+OLD INSTRUCTIONS (3/28/11):
 
 -Admin login-
 email: admin@admin.com
