@@ -1,0 +1,31 @@
+<% @title = "Assignments"%>
+
+<h1>Questionnaires assigned to you:</h1>
+
+<table>
+  <tr>
+    <th>Questionnaire</th>
+    <th>Assigned by</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @assignments.each do |assignment| %>
+    <% q = assignment.questionnaire %>
+    <% if assignment.submitted %>
+      <tr>
+        <td><%= "#{q.name} (submitted)" %></td>
+        <td><%= name_of(assignment.assigner_id) %></td>
+        <td><%= link_to 'View your responses', assignment %></td>
+        <td></td>
+      </tr>
+    <% else %>
+      <tr>
+        <td><%= "#{q.name} (#{q.questions.count} questions)" %></td>
+        <td><%= name_of(assignment.assigner_id) %></td>
+        <td><%= link_to 'Work on this questionnaire', answer_path(q) %></td>
+        <td><%= link_to 'Submit', submit_path(q) %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

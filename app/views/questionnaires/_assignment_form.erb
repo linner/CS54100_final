@@ -1,0 +1,15 @@
+<table>
+  <th>User</th>
+  <th>Assign?</th>
+  <th></th>
+  <th></th>
+
+  <% for user in @users do %>
+    <% if not user.is_admin? %>
+      <tr>
+        <td><%= "#{user.email}" %></td>
+        <td><%= check_box_tag "user_ids[]", user.id %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

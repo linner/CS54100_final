@@ -1,0 +1,29 @@
+<% @title = "Questionnaires"%>
+
+<h1>Listing questionnaires</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Author</th>
+    <th>Number of questions</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @questionnaires.each do |questionnaire| %>
+  <tr>
+    <td><%= link_to "#{questionnaire.name}", questionnaire %></td>
+    <td><%= name_of(questionnaire.author) %></td>
+    <td><%= questionnaire.questions.count %></td>
+    <td><%= link_to "#{questionnaire.assignments.where(:submitted => true).count} submissions", submissions_path(questionnaire) %></td>
+    <td><%= link_to 'Assign', assign_path(questionnaire) %></td>
+    <td><%= link_to 'Edit', edit_questionnaire_path(questionnaire) %>/<%= link_to 'Delete', questionnaire, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Questionnaire', new_questionnaire_path %>

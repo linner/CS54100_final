@@ -1,0 +1,19 @@
+<% @title = @questionnaire.name %>
+
+<p id="notice"><%= notice %></p>
+
+<h2>
+  <%= @questionnaire.name %>
+</h2>
+
+<hr/>
+
+<% num = 0 %>
+<% for question in @questionnaire.questions %>
+  <p>
+    <%= "#{num+=1}. #{question.text}" %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit this questionnaire', edit_questionnaire_path(@questionnaire) %> |
+<%= link_to 'Back', questionnaires_path %>

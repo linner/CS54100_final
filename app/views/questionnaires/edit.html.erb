@@ -1,0 +1,18 @@
+<% @title = "Editting #{@questionnaire.name}"%>
+
+<h1>Editing questionnaire</h1>
+
+<%= form_tag({:controller => "questionnaires", :action => "update"}, :method => "put") %>
+  <p>
+    Name: <%= text_field_tag(:name, @questionnaire.name) %>
+  </p>
+  <hr/>
+  
+  <h3>Available questions:</h3>
+  <%= render :partial => 'form' %>
+
+  <%= submit_tag("Done") %>
+
+<br/>
+<%= link_to 'Add more questions', questions_path %>
+<%= link_to 'Back', questionnaires_path %>

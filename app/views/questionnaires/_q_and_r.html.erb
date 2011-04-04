@@ -1,0 +1,10 @@
+<%  if @question.responses.where(:owner => current_user.id).exists?
+      previous_answer = @question.responses.where(:owner => current_user.id).first.response
+    else
+      previous_answer = nil
+    end %>
+
+<p>
+  <b><%= @question.text %></b><br/>
+  <%= text_area_tag "questions[#{@question.id}]", previous_answer %>
+</p>

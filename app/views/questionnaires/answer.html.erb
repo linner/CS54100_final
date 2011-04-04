@@ -1,0 +1,15 @@
+<% @title = @questionnaire.name %>
+
+<h1>Answering <%= @questionnaire.name %></h1>
+
+<%= form_tag({:controller => "responses", :action => "create"}, :method => "post") %>
+  <%= hidden_field_tag "questionnaire_id", @questionnaire.id %>
+
+  <% for @question in @questionnaire.questions %>
+    <%= render :partial => 'q_and_r' %>
+    <br/>
+  <% end %>
+
+  <br/>
+  <%= submit_tag "Save", :name => "x" %> | 
+  <%= link_to 'Back to assignments', questionnaires_path %>

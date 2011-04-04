@@ -1,0 +1,23 @@
+<% @title = "Responses" %>
+
+<h1>Submissions for <%= @questionnaire.name %>:</h1>
+
+<hr/>
+
+<table>
+  <tr>
+    <th>Applicant</th>
+    <th>Action</th>
+    <th>Timestamp</th>
+  </tr>
+
+  <% for submission in @submissions %>
+    <tr>
+      <td><%= name_of(submission.user)%></td>
+      <td><%= link_to "View responses", submission %></td>
+      <td><%= submission.updated_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Back', questionnaires_path %>

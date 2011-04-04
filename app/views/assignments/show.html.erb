@@ -1,0 +1,23 @@
+<% @title = "#{@questionnaire.name} Response" %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @questionnaire.name %>
+</h1>
+<h4>Applicant name: <%= @user.name %></h4>
+<hr/>
+
+
+<% num = 0 %>
+<% for question in @questionnaire.questions %>
+  <% r = question.responses.where(:owner => @user).first %>
+  <p>
+    <b><%= "#{num+=1}. #{question.text}" %></b>
+  </p>
+  <p>
+    <i>> <%= "#{r.response}" %></i>
+  </p>
+<% end %>
+
+<%= link_to 'Back', questionnaires_path %>

@@ -1,0 +1,20 @@
+<table>
+  <th>Question</th>
+  <th>Include?</th>
+  <th></th>
+  <th></th>
+
+  <% @questions = Question.all if @questions.blank? %>
+
+  <% for q in @questions do %>
+    <tr>
+      <%  if params[:action] == "new"
+            is_checked = false
+          else
+            is_checked = @questionnaire.questions.include?(q)
+          end %>
+      <td><%= "#{q.text}" %></td>
+      <td><%= check_box_tag "question_ids[]", q.id, is_checked %></td>
+    </tr>
+  <% end %>
+</table>

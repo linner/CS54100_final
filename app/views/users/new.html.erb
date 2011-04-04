@@ -1,0 +1,46 @@
+<% @title = "Register" %>
+
+<h1>Register</h1>
+
+<%= form_for @user do |user_form| %>
+  <% if @user.errors.any? %>
+    <div class="errors">
+      <h3>Your form had the following errors:</h3>
+
+      <ul>
+        <% for error in @user.errors.full_messages %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+
+  <% end %>
+
+  <p>
+    <%= user_form.label :name %> <br />
+    <%= user_form.text_field :name %>
+  </p>
+
+  <p>
+    <%= user_form.label :email %> <br />
+    <%= user_form.text_field :email %>
+  </p>
+
+  <p>
+    <%= user_form.label "Choose a password" %> <br />
+    <%= user_form.password_field :password%>
+  </p>
+
+  <p>
+    <%= user_form.label "Confirm password" %> <br />
+    <%= user_form.password_field :password_confirmation %>
+  </p>
+
+  <p>
+    <%= user_form.radio_button :account_type, "user" %><%= user_form.label "User account" %><br/>
+    <%= user_form.radio_button :account_type, "admin" %><%= user_form.label "Admin account" %>
+  </p>
+
+  <p class="button"><%= user_form.submit %></p>
+
+<% end %>

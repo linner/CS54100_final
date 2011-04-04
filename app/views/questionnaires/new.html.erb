@@ -1,0 +1,27 @@
+<% @title = "New Questionnaire"%>
+
+<h1>New questionnaire</h1>
+
+<%= form_tag({:controller => "questionnaires", :action => "create"}, :method => "post") %>
+  
+  <% if @questionnaire.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @questionnaire.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    Name: <%= text_field_tag(:name) %>
+  </p>
+  <hr/>
+
+  <%= render :partial => 'form' %>
+
+<%= link_to 'Add more questions', questions_path %>
+<br/><br/>
+<%= submit_tag("Create questionnaire") %>

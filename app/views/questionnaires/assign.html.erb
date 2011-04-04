@@ -1,0 +1,12 @@
+<% @title = "Assigning #{@questionnaire.name}"%>
+
+<h1>Assigning <%= @questionnaire.name%></h1>
+
+<%= form_tag({:controller => "assignments", :action => "create"}, :method => "post") %>
+<%= hidden_field_tag "questionnaire", @questionnaire.id %>
+<%= render :partial => 'assignment_form' %>
+
+<%= submit_tag("Done") %>
+
+<br/>
+<%= link_to 'Back to questionnaires', questionnaires_path %>
