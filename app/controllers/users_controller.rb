@@ -1,4 +1,15 @@
 class UsersController < ApplicationController
+
+  def index
+    @users = User.where(:account_type => "user")
+  end
+
+  def show
+    @user = User.find(params[:id])
+    
+    @submissions = @user.assignments.where(:submitted => true)
+  end
+
   def new
     if current_user
       flash[:notice] = "Already logged in."

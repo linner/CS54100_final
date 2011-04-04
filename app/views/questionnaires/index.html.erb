@@ -1,6 +1,7 @@
 <% @title = "Questionnaires"%>
 
 <h1>Listing questionnaires</h1>
+<hr/>
 
 <table>
   <tr>
@@ -25,5 +26,6 @@
 </table>
 
 <br />
+<%= link_to "View by users", users_path %> | 
 <%= link_to 'Add questions', questions_path %> | 
 <%= link_to 'New Questionnaire', new_questionnaire_path %>

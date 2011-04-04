@@ -1,0 +1,30 @@
+<% @title = "#{@user.name} submissions" %>
+
+<h1>Questionnaires submitted by <%= @user.name %>:</h1>
+<hr/>
+
+<% if @submissions.empty? %>
+  <p>
+    <b>No activity.</b>
+  </p>
+<% else %>
+  <table>
+    <tr>
+      <th>Questionnaire</th>
+      <th>Date submitted</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% for s in @submissions %>
+      <tr>
+        <td><%= s.questionnaire.name %> <%= link_to "(view)", s %></td>
+        <td><%= s.updated_at %></td>
+        <td></td>
+        <th></th>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<%= link_to "Back to users", users_path %>

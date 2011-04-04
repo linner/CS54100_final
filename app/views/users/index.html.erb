@@ -1,0 +1,29 @@
+<% @title = "Users"%>
+
+<h1>Listing questionnaires</h1>
+<hr/>
+
+<table>
+  <tr>
+    <th>User name</th>
+    <th>Questionnaires completed</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <% submissions = user.assignments.where(:submitted => true) %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= submissions.count %></td>
+    <td><%= link_to "View submissions", user%></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to "View by questionnaires", questionnaires_path %>

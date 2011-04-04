@@ -40,15 +40,20 @@ class QuestionnairesController < ApplicationController
 
     @questionnaire = Questionnaire.new
     @questionnaire.name = params[:name]
-    @questionnaire.author = current_user
+    @questionnaire.author = current_user.id
 
-    @questionnaire.questions = Question.find(params[:question_ids]) if not params[:question_ids].blank?
-
-    if @questionnaire.save
-      flash[:notice] = "Questionnaire \"#{@questionnaire.name}\" successfully created."
-      redirect_to questionnaires_path
-    else
+    if params[:question_ids].blank?
+      flash[:notice] = "Please select at least one question."
       render :action => "new"
+    else
+      @questionnaire.questions = Question.find(params[:question_ids])
+      
+      if @questionnaire.save
+        flash[:notice] = "Questionnaire \"#{@questionnaire.name}\" successfully created."
+        redirect_to questionnaires_path
+      else
+        render :action => "new"
+      end
     end
   end
 

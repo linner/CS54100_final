@@ -16,6 +16,16 @@ Notes:
 -Questions must be created prior to including them in a questionnaire.
 -Questions, once created, cannot be edited (only deleted).
 
+Future improvements:
+
+-Add a comment model, for administrators to comment on applicants.
+-Add a new table to allow assignment before user account has been created.
+    This table can be parsed after each user account has been created, to allow
+    admins to assign questionnaires to e-mail addresses not already in the system.
+-E-mail notification for assignment/submission
+-Dynamic questionnaire creation/editing
+-Improve aesthetics
+
 Known issues:
 
 -App not account for modification of questionnaires that have already been taken.
