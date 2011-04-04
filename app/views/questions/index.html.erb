@@ -1,8 +1,9 @@
+<% @title = "Questions" %>
+
 <h1>Questions:</h1>
 
 <table>
   <tr>
-    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,7 +15,6 @@
   <tr>
     <td><%= h truncate(question.text, :length => 80) %></td>
     <td><%= link_to 'Show', question %></td>
-    <td><%= link_to 'Edit', edit_question_path(question) %></td>
     <td><%= link_to 'Delete', question, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
@@ -22,5 +22,5 @@
 
 <br />
 
-<%= link_to 'New Question', new_question_path %><br/>
+<%= link_to 'New Question', new_question_path %> | 
 <%= link_to 'Questionnaires', questionnaires_path %>

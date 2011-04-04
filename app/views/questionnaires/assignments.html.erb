@@ -24,7 +24,7 @@
         <td><%= "#{q.name} (#{q.questions.count} questions)" %></td>
         <td><%= name_of(assignment.assigner_id) %></td>
         <td><%= link_to 'Work on this questionnaire', answer_path(q) %></td>
-        <td><%= link_to 'Submit', submit_path(q) %></td>
+        <td><%= link_to 'Submit', submit_path(q), :confirm => 'Are you sure? (Once you submit, you will not be able to change your answers)' %></td>
       </tr>
     <% end %>
   <% end %>

@@ -1,0 +1,103 @@
+INSTRUCTIONS:
+
+-Admin login-
+email: admin@admin.com
+pass: admin
+
+-eric login-
+email: eric@eric.com
+pass: eric
+
+Admin and user accounts (i.e. eric) are handled differently. Namely, admin
+can create new questions/questionnaires, and users can only view the questionnaires
+that have been assigned to them.
+
+Known issues:
+
+-Questionnaire creation/modification is broken
+-Creating/Updating questions results in a double notification
+-Assigning questionnaires to users does not work
+-No protection against duplication for entries in question database
+-No way to set admin status (other than through activemodel)
+-Users are unable to respond to questionnaires (can only view)
+
+Models:
+
+Question
+    -Body => Text
+
+Questionnaire
+    -Name => String
+    -Author => Refers to user
+    -Questions => stored through an association table
+
+User
+    -Name => String
+    -Email => String
+    -Password
+    -User type => admin, or user
+
+Responses
+    -User => Refers to user
+    -Question => Refers to question
+    -Response => Text
+
+Assignments
+    -User => Refers to user
+    -Assigned by => Refers to user
+    -Questionnaire => Refers to questionnaire
+    -Completed => True/false
+
+Sessions
+    -Not an actual model. Used to store login info
+
+
+Design notes:
+
+Users log in. If the user doesn't have a login, they must register first. After
+logging in, they will have different options, depending on their account type.
+
+--ADMIN--
+
+If a user is flagged as Admin, they are taken to a listing of all questionnaires.
+
+Here, they can create new question(naire)s, modify/delete existing
+question(naire)s, and also assign questionnaires.
+
+They should also be able to access a page listing all of the questionnaires that
+they assigned, sorted by submit time and completion status.
+
+When creating a new questionnaire, the user will be taken to a form, where 
+they can draw from the pool of existing questions. Additionally, they can add
+questions that don't exist, by typing them out. If the user adds questions
+using this option, and types out a question, it should be checked against
+existing questions, so the same question doesn't end up existing twice in the DB.
+
+When assigning a questionnaire to users, a mailer should send a user an e-mail, 
+containing the URL of the quiz. Ideally, this should save the quiz for the user, 
+for when they create their account.
+
+On the admin side, when clicking on the assignment link, they should be taken to a 
+form with a list of all users who have not had that questionnaire assigned 
+(populated by searching assignment table). The user should be able to assign the questionnaire 
+to multiple users using this form.
+
+--USERS--
+
+After logging in, users are taken to a page showing questionnaires they
+have been assigned, also showing who it has been assigned by.
+
+Clicking on each questionnaire takes the user to that questionnaire,
+which they can take.
+
+On the user's 'home page', they should also see a history of their most recently 
+submitted questionnaires.
+
+While taking a questionnaire, users should be able to save their progress, to come
+back to it later.
+
+Submitting a questionnaire will finalize their answers, and notify the person
+who assigned the questionnaire that it has been completed (also with a URL to the 
+user's responses). Ideally, this will be done via a mailer.
+
+Thanks for reading!

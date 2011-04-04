@@ -3,7 +3,7 @@
     <type>org.netbeans.modules.ruby.railsprojects</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/rails-project/1">
-            <name>code_test</name>
+            <name>goodreads_thing</name>
         </data>
     </configuration>
 </project>

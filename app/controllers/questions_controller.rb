@@ -24,11 +24,6 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
-  # GET /questions/1/edit
-  def edit
-    @question = Question.find(params[:id])
-  end
-
   # POST /questions
   def create
     @question = Question.new(params[:question])
@@ -39,14 +34,6 @@ class QuestionsController < ApplicationController
       else
         render :action => "new"
       end
-  end
-
-  # PUT /questions/1
-  def update
-    @question = Question.find(params[:id])
-
-    flash[:notice] = 'Question was successfully updated.'
-    redirect_to questions_path
   end
 
   # DELETE /questions/1
